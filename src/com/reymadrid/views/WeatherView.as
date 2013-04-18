@@ -288,7 +288,7 @@ package com.reymadrid.views
 		{
 			var _loc_2:* = param1;
 			var _loc_3:* = new ImageViewer();
-			_loc_3.path = "images/icons/";
+			_loc_3.path = "assets/images/icons/";
 			var _loc_4:* = this.imageByCode(_loc_2);
 			_loc_3.imageList = [_loc_4];
 			_loc_3.x = -72;
@@ -323,7 +323,7 @@ package com.reymadrid.views
 		{
 			var _loc_2:* = param1;
 			var _loc_3:* = new ImageViewer();
-			_loc_3.path = "images/icons/";
+			_loc_3.path = "assets/images/icons/";
 			var _loc_4:* = this.imageByCode(_loc_2);
 			_loc_3.imageList = [_loc_4];
 			_loc_3.x = 124;

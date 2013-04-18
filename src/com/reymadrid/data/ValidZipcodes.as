@@ -19,6 +19,8 @@ package com.reymadrid.data
 			var _loc_1:* = new URLLoader();
 			_loc_1.load(new URLRequest("data/zipcodes.txt"));
 			_loc_1.addEventListener(Event.COMPLETE, this.onLoad);
+			
+			
 			return;
 		}// end function
 		
