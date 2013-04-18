@@ -23,7 +23,7 @@ package com.reymadrid.app
 		
 		public function Application()
 		{
-			super();
+			//super();
 			init();
 		}
 		

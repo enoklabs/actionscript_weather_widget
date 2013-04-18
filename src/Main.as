@@ -6,9 +6,8 @@ Assignment #2 - Weather Application
 */ 
 package
 {
+	import com.reymadrid.app.Application;
 	import flash.display.Sprite;
-	import com.reymadrid.app.*;
-	import flash.display.*;
 
 	[SWF (height="400", width="600", backgroundColor="0x000000")]
 	
@@ -24,10 +23,10 @@ package
 		
 		private function init() : void
 		{
-			var _loc_1:* = new Application();
-			_loc_1.x = stage.stageWidth / 2;
-			_loc_1.y = 5;
-			this.addChild(_loc_1);
+			var app:Application = new Application();
+			app.x = stage.stageWidth / 2;
+			app.y = 5;
+			this.addChild(app);
 			return;
 		}// end function
 		
