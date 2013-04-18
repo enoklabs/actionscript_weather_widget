@@ -17,7 +17,7 @@ package com.reymadrid.data
 		private function loadData() : void
 		{
 			var _loc_1:* = new URLLoader();
-			_loc_1.load(new URLRequest("data/zipcodes.txt"));
+			_loc_1.load(new URLRequest("assets/data/zipcodes.txt"));
 			_loc_1.addEventListener(Event.COMPLETE, this.onLoad);
 			
 			
