@@ -40,7 +40,7 @@ package com.reymadrid.views
 		private function restrictInput() : void
 		{
 			tfInput.restrict = "0-9";
-			tfInput.maxChars = 7;
+			tfInput.maxChars = 5;
 		}
 		
 		private function toggleFahr(event:MouseEvent) : void

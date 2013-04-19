@@ -46,7 +46,7 @@ package com.reymadrid.app
 		private function zipsLoaded(event:Event) : void
 		{
 			_validZips = _validate.validZips;
-			if (_iv.zipcode.length == 7)
+			if (_iv.zipcode.length == 5)
 			{
 			}
 			if (_validZips.search(_iv.zipcode) != -1)
