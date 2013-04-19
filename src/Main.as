@@ -17,11 +17,13 @@ package
 		
 		public function Main()
 		{
+			//initialize the application
 			init();
 		}
 		
 		private function init() : void
 		{
+			//display app on screen
 			var app:Application = new Application();
 			app.x = stage.stageWidth / 2;
 			app.y = 5;

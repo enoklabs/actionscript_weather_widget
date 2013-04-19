@@ -3,7 +3,7 @@ package com.reymadrid.views
 	import flash.events.MouseEvent;
 	
 	import libs.InputViewBase;
-	//import flash.display.MovieClip;
+	import flash.display.MovieClip;
 	
 	public class InputView extends InputViewBase
 	{
@@ -13,11 +13,6 @@ package com.reymadrid.views
 		private var _speedType:String;
 		
 		public function InputView()
-		{
-			init();
-		}
-		
-		private function init() : void
 		{
 			setupButtons();
 			restrictInput();

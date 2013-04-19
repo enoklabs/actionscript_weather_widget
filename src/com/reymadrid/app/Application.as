@@ -28,14 +28,18 @@ package com.reymadrid.app
 			init();
 		}
 		
+		//displays zipcode input window "InputView"
 		private function init() : void
 		{
 			_iv = new InputView();
 			addChild(_iv);
+			
+			//submit button calls onSubmit() when clicked
 			_iv.submitBtn.addEventListener(MouseEvent.CLICK, onSubmit);
 			_vo = new WeatherVO();
 		}
 		
+		//calls for zipcode ValidateZipcodes class to check valid numbers
 		private function onSubmit(event:MouseEvent) : void
 		{
 			_iv.error = "";
@@ -43,6 +47,7 @@ package com.reymadrid.app
 			_validate.addEventListener(Event.COMPLETE, zipsLoaded);
 		}
 		
+		//validates the zipcode entered
 		private function zipsLoaded(event:Event) : void
 		{
 			_validZips = _validate.validZips;
@@ -56,26 +61,33 @@ package com.reymadrid.app
 			}
 			else
 			{
+				//if zipcode didn't validate, this error is displayed
 				_iv.error = "* Please enter a valid U.S. zipcode. *";
 			}
 
 		}
 		
+		//send the string to the ZipConverter
 		private function convertZip(value:String) : void
 		{
 			_zc = new ZipcodeConverter(value);
 			_zc.addEventListener(Event.COMPLETE, conversionComplete);
 		}
 		
+		//when converted, _woeid stores the zipcode
 		private function conversionComplete(event:Event) : void
 		{
 			_woeid = _zc.woeid;
 			xmlLoad();
 		}
 		
+		//loads the xml from the yahoo weather
 		private function xmlLoad() : void
 		{
 			var urlLoader:URLLoader = new URLLoader();
+			
+			//if degree type was fahrenheit, loads the fahrenheit xml
+			//or else it loads the celsius xml data
 			if (_iv.degreeType == "F")
 			{
 				urlLoader.load(new URLRequest("http://weather.yahooapis.com/forecastrss?w=" + _woeid));
@@ -84,9 +96,13 @@ package com.reymadrid.app
 			{
 				urlLoader.load(new URLRequest("http://weather.yahooapis.com/forecastrss?w=" + _woeid + "&u=c"));
 			}
+			
+			//when done calls for onParse function
 			urlLoader.addEventListener(Event.COMPLETE, onParse);
 		}
 		
+		//during parsing, weather details are stored 
+		//inside variables listed on the WeatherVO 
 		private function onParse(event:Event) : void
 		{
 			var xml:XML = XML(event.target.data);
@@ -106,6 +122,8 @@ package com.reymadrid.app
 			loadWeather();
 		}
 		
+		//loads the weather results and displays the WeatherView()
+		//ui elements receive the information stored inside the _vo variables
 		private function loadWeather() : void
 		{
 			_wv = new WeatherView();
@@ -124,9 +142,12 @@ package com.reymadrid.app
 			_wv.speedType = _iv.speedType;
 			_wv.currentWindDirection = _vo.currentWindDirection;
 			addChild(_wv);
+			
+			//when reset button is clicked, application resets
 			_wv.resetBtn.addEventListener(MouseEvent.CLICK, onReset);
 		}
 		
+		//onReset removes the WeatherView and initializes the InputView
 		private function onReset(event:MouseEvent) : void
 		{
 			removeChild(_wv);
