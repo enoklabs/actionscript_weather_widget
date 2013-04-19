@@ -75,16 +75,16 @@ package com.reymadrid.app
 		
 		private function xmlLoad() : void
 		{
-			var _loc_1:* = new URLLoader();
+			var urlLoader:URLLoader = new URLLoader();
 			if (_iv.degreeType == "F")
 			{
-				_loc_1.load(new URLRequest("http://weather.yahooapis.com/forecastrss?w=" + _woeid));
+				urlLoader.load(new URLRequest("http://weather.yahooapis.com/forecastrss?w=" + _woeid));
 			}
 			else
 			{
-				_loc_1.load(new URLRequest("http://weather.yahooapis.com/forecastrss?w=" + _woeid + "&u=c"));
+				urlLoader.load(new URLRequest("http://weather.yahooapis.com/forecastrss?w=" + _woeid + "&u=c"));
 			}
-			_loc_1.addEventListener(Event.COMPLETE, onParse);
+			urlLoader.addEventListener(Event.COMPLETE, onParse);
 		}
 		
 		private function onParse(event:Event) : void
