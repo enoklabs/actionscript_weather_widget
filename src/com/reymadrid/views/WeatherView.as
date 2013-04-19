@@ -1,10 +1,9 @@
 package com.reymadrid.views
 {
 	import libs.WeatherBase;
-	import com.reymadrid.ui.*;
-	import flash.events.*;
-	import flash.text.*;
-	import libs.*;
+	import com.reymadrid.ui.ImageViewer;
+	import flash.events.MouseEvent;
+	import flash.text.TextField;
 	
 	public class WeatherView extends WeatherBase
 	{
@@ -17,215 +16,213 @@ package com.reymadrid.views
 		}
 		private function init() : void
 		{
-			this.setupButton();
-			this._degreeTypes = [tfDegreeType1, tfDegreeType2, tfDegreeType3, tfDegreeType4, tfDegreeType5];
-			return;
+			setupButton();
+			_degreeTypes = [tfDegreeType1, tfDegreeType2, tfDegreeType3, tfDegreeType4, tfDegreeType5];
 		}
 		
 		private function setupButton() : void
 		{
 			resetBtn.gotoAndStop(1);
-			resetBtn.addEventListener(MouseEvent.MOUSE_DOWN, this.mouseDown);
-			return;
-		}// end function
+			resetBtn.addEventListener(MouseEvent.MOUSE_DOWN, mouseDown);
+		}
 		
-		private function imageByCode(param1:String) : String
+		private function imageByCode(code:String) : String
 		{
-			var _loc_2:* = null;
-			if (param1 == "0")
+			var img:String = "";
+			if (code == "0")
 			{
-				_loc_2 = "tornado.png";
+				img = "tornado.png";
 			}
 			else
 			{
-				if (param1 != "1")
+				if (code != "1")
 				{
 				}
-				if (param1 == "2")
+				if (code == "2")
 				{
-					_loc_2 = "hurricaine.png";
+					img = "hurricaine.png";
 				}
 				else
 				{
-					if (param1 != "3")
+					if (code != "3")
 					{
 					}
-					if (param1 != "4")
+					if (code != "4")
 					{
 					}
-					if (param1 != "37")
+					if (code != "37")
 					{
 					}
-					if (param1 != "38")
+					if (code != "38")
 					{
 					}
-					if (param1 != "39")
+					if (code != "39")
 					{
 					}
-					if (param1 != "45")
+					if (code != "45")
 					{
 					}
-					if (param1 == "47")
+					if (code == "47")
 					{
-						_loc_2 = "tstorm3.png";
+						img = "tstorm3.png";
 					}
 					else
 					{
-						if (param1 != "5")
+						if (code != "5")
 						{
 						}
-						if (param1 != "6")
+						if (code != "6")
 						{
 						}
-						if (param1 != "7")
+						if (code != "7")
 						{
 						}
-						if (param1 == "18")
+						if (code == "18")
 						{
-							_loc_2 = "sleet.png";
+							img = "sleet.png";
 						}
 						else
 						{
-							if (param1 != "8")
+							if (code != "8")
 							{
 							}
-							if (param1 != "10")
+							if (code != "10")
 							{
 							}
-							if (param1 == "35")
+							if (code == "35")
 							{
-								_loc_2 = "hail_mixed.png";
+								img = "hail_mixed.png";
 							}
 							else
 							{
-								if (param1 != "9")
+								if (code != "9")
 								{
 								}
-								if (param1 == "40")
+								if (code == "40")
 								{
-									_loc_2 = "light_rain.png";
+									img = "light_rain.png";
 								}
 								else
 								{
-									if (param1 != "11")
+									if (code != "11")
 									{
 									}
-									if (param1 == "12")
+									if (code == "12")
 									{
-										_loc_2 = "shower3.png";
+										img = "shower3.png";
 									}
 									else
 									{
-										if (param1 != "13")
+										if (code != "13")
 										{
 										}
-										if (param1 != "14")
+										if (code != "14")
 										{
 										}
-										if (param1 != "42")
+										if (code != "42")
 										{
 										}
-										if (param1 == "46")
+										if (code == "46")
 										{
-											_loc_2 = "snow4.png";
+											img = "snow4.png";
 										}
 										else
 										{
-											if (param1 != "15")
+											if (code != "15")
 											{
 											}
-											if (param1 != "16")
+											if (code != "16")
 											{
 											}
-											if (param1 != "41")
+											if (code != "41")
 											{
 											}
-											if (param1 == "43")
+											if (code == "43")
 											{
-												_loc_2 = "snow5.png";
+												img = "snow5.png";
 											}
-											else if (param1 == "17")
+											else if (code == "17")
 											{
-												_loc_2 = "hail.png";
+												img = "hail.png";
 											}
-											else if (param1 == "19")
+											else if (code == "19")
 											{
-												_loc_2 = "dusty.png";
+												img = "dusty.png";
 											}
 											else
 											{
-												if (param1 != "20")
+												if (code != "20")
 												{
 												}
-												if (param1 == "22")
+												if (code == "22")
 												{
-													_loc_2 = "fog.png";
+													img = "fog.png";
 												}
-												else if (param1 == "21")
+												else if (code == "21")
 												{
-													_loc_2 = "haze.png";
+													img = "haze.png";
 												}
 												else
 												{
-													if (param1 != "23")
+													if (code != "23")
 													{
 													}
-													if (param1 == "24")
+													if (code == "24")
 													{
-														_loc_2 = "windy.png";
+														img = "windy.png";
 													}
-													else if (param1 == "25")
+													else if (code == "25")
 													{
-														_loc_2 = "cold.png";
+														img = "cold.png";
 													}
-													else if (param1 == "26")
+													else if (code == "26")
 													{
-														_loc_2 = "cloudy5.png";
+														img = "cloudy5.png";
 													}
-													else if (param1 == "27")
+													else if (code == "27")
 													{
-														_loc_2 = "cloudy4_night.png";
+														img = "cloudy4_night.png";
 													}
-													else if (param1 == "28")
+													else if (code == "28")
 													{
-														_loc_2 = "cloudy4.png";
+														img = "cloudy4.png";
 													}
-													else if (param1 == "29")
+													else if (code == "29")
 													{
-														_loc_2 = "cloudy2_night.png";
+														img = "cloudy2_night.png";
 													}
 													else
 													{
-														if (param1 != "30")
+														if (code != "30")
 														{
 														}
-														if (param1 == "44")
+														if (code == "44")
 														{
-															_loc_2 = "cloudy2.png";
+															img = "cloudy2.png";
 														}
-														else if (param1 == "31")
+														else if (code == "31")
 														{
-															_loc_2 = "clear_night.png";
+															img = "clear_night.png";
 														}
-														else if (param1 == "32")
+														else if (code == "32")
 														{
-															_loc_2 = "sunny.png";
+															img = "sunny.png";
 														}
-														else if (param1 == "33")
+														else if (code == "33")
 														{
-															_loc_2 = "cloudy1_night.png";
+															img = "cloudy1_night.png";
 														}
-														else if (param1 == "34")
+														else if (code == "34")
 														{
-															_loc_2 = "cloudy1.png";
+															img = "cloudy1.png";
 														}
-														else if (param1 == "36")
+														else if (code == "36")
 														{
-															_loc_2 = "hot.png";
+															img = "hot.png";
 														}
-														else if (param1 == "3200")
+														else if (code == "3200")
 														{
-															_loc_2 = "dunno.png";
+															img = "dunno.png";
 														}
 													}
 												}
@@ -238,278 +235,278 @@ package com.reymadrid.views
 					}
 				}
 			}
-			return _loc_2;
-		}// end function
+			return img;
+		}
 		
 		private function mouseDown(event:MouseEvent) : void
 		{
 			resetBtn.gotoAndStop(2);
 			resetBtn.addEventListener(MouseEvent.MOUSE_UP, this.mouseUp);
 			return;
-		}// end function
+		}
 		
 		private function mouseUp(event:MouseEvent) : void
 		{
 			resetBtn.gotoAndStop(1);
-			resetBtn.removeEventListener(MouseEvent.MOUSE_UP, this.mouseUp);
+			resetBtn.removeEventListener(MouseEvent.MOUSE_UP, mouseUp);
 			return;
-		}// end function
+		}
 		
-		public function set degreeType(param1:String) : void
+		public function set degreeType(dt:String):void
 		{
-			var _loc_2:* = null;
-			for each (_loc_2 in this._degreeTypes)
+			var degree:* = null;
+			for each (degree in this._degreeTypes)
 			{
 				
-				_loc_2.text = param1;
+				degree.text = dt;
 			}
 			return;
-		}// end function
+		}
 		
-		public function set location(param1:String) : void
+		public function set location(value:String):void
 		{
-			tfLocation.text = param1;
+			tfLocation.text = value;
 			return;
-		}// end function
+		}
 		
-		public function set todayHigh(param1:String) : void
+		public function set todayHigh(value:String):void
 		{
-			tfTodayHigh.text = param1;
+			tfTodayHigh.text = value;
 			return;
-		}// end function
+		}
 		
-		public function set todayLow(param1:String) : void
+		public function set todayLow(value:String):void
 		{
-			tfTodayLow.text = param1;
+			tfTodayLow.text = value;
 			return;
-		}// end function
+		}
 		
-		public function set todayCode(param1:String) : void
+		public function set todayCode(value:String):void
 		{
-			var _loc_2:* = param1;
-			var _loc_3:* = new ImageViewer();
-			_loc_3.path = "assets/images/icons/";
-			var _loc_4:* = this.imageByCode(_loc_2);
-			_loc_3.imageList = [_loc_4];
-			_loc_3.x = -72;
-			_loc_3.y = -79;
-			var _loc_5:* = 0.5;
-			_loc_3.scaleY = 0.5;
-			_loc_3.scaleX = _loc_5;
-			_loc_3.display();
-			this.addChild(_loc_3);
+			var tc:String = value;
+			var iv:* = new ImageViewer();
+			iv.path = "assets/images/icons/";
+			var img:* = imageByCode(tc);
+			iv.imageList = [img];
+			iv.x = -72;
+			iv.y = -79;
+			var _x:* = 0.5;
+			iv.scaleY = 0.5;
+			iv.scaleX = _x;
+			iv.display();
+			this.addChild(iv);
 			return;
-		}// end function
+		}
 		
-		public function set todayForecast(param1:String) : void
+		public function set todayForecast(value:String) : void
 		{
-			tfTodayForecast.text = param1;
+			tfTodayForecast.text = value;
 			return;
-		}// end function
+		}
 		
-		public function set tomorrowHigh(param1:String) : void
+		public function set tomorrowHigh(value:String) : void
 		{
-			tfTomorrowHigh.text = param1;
+			tfTomorrowHigh.text = value;
 			return;
-		}// end function
+		}
 		
-		public function set tomorrowLow(param1:String) : void
+		public function set tomorrowLow(value:String) : void
 		{
-			tfTomorrowLow.text = param1;
+			tfTomorrowLow.text = value;
 			return;
-		}// end function
+		}
 		
-		public function set tomorrowCode(param1:String) : void
+		public function set tomorrowCode(value:String) : void
 		{
-			var _loc_2:* = param1;
-			var _loc_3:* = new ImageViewer();
-			_loc_3.path = "assets/images/icons/";
-			var _loc_4:* = this.imageByCode(_loc_2);
-			_loc_3.imageList = [_loc_4];
-			_loc_3.x = 124;
-			_loc_3.y = -79;
-			var _loc_5:* = 0.5;
-			_loc_3.scaleY = 0.5;
-			_loc_3.scaleX = _loc_5;
-			_loc_3.display();
-			this.addChild(_loc_3);
+			var tmc:* = value;
+			var iv:* = new ImageViewer();
+			iv.path = "assets/images/icons/";
+			var img:* = this.imageByCode(tmc);
+			iv.imageList = [img];
+			iv.x = 124;
+			iv.y = -79;
+			var _x:* = 0.5;
+			iv.scaleY = 0.5;
+			iv.scaleX = _x;
+			iv.display();
+			this.addChild(iv);
 			return;
-		}// end function
+		}
 		
-		public function set tomorrowForecast(param1:String) : void
+		public function set tomorrowForecast(value:String) : void
 		{
-			tfTomorrowForecast.text = param1;
+			tfTomorrowForecast.text = value;
 			return;
-		}// end function
+		}
 		
-		public function set currentTemp(param1:String) : void
+		public function set currentTemp(value:String) : void
 		{
-			tfCurrentTemp.text = param1;
+			tfCurrentTemp.text = value;
 			return;
-		}// end function
+		}
 		
-		public function set speedType(param1:String) : void
+		public function set speedType(value:String) : void
 		{
-			tfSpeedType.text = param1;
+			tfSpeedType.text = value;
 			return;
-		}// end function
+		}
 		
-		public function set currentWindMPH(param1:String) : void
+		public function set currentWindMPH(value:String) : void
 		{
-			var _loc_2:* = Math.round(Number(param1));
-			var _loc_3:* = String(_loc_2);
-			tfWindMPH.text = _loc_3;
+			var wind:* = Math.round(Number(value));
+			var windMph:* = String(wind);
+			tfWindMPH.text = windMph;
 			return;
-		}// end function
+		}
 		
-		public function set currentWindDirection(param1:String) : void
+		public function set currentWindDirection(value:String) : void
 		{
-			var _loc_2:* = Number(param1);
-			if (_loc_2 == 0)
+			var windDir:* = Number(value);
+			if (windDir == 0)
 			{
 				tfWindDirection.text = "";
 			}
 			else
 			{
-				if (_loc_2 > 348.75)
+				if (windDir > 348.75)
 				{
 				}
-				if (_loc_2 < 11.25)
+				if (windDir < 11.25)
 				{
 					tfWindDirection.text = "N";
 				}
 				else
 				{
-					if (_loc_2 > 11.25)
+					if (windDir > 11.25)
 					{
 					}
-					if (_loc_2 < 33.75)
+					if (windDir < 33.75)
 					{
 						tfWindDirection.text = "NNE";
 					}
 					else
 					{
-						if (_loc_2 > 33.75)
+						if (windDir > 33.75)
 						{
 						}
-						if (_loc_2 < 56.25)
+						if (windDir < 56.25)
 						{
 							tfWindDirection.text = "NE";
 						}
 						else
 						{
-							if (_loc_2 > 56.25)
+							if (windDir > 56.25)
 							{
 							}
-							if (_loc_2 < 78.75)
+							if (windDir < 78.75)
 							{
 								tfWindDirection.text = "ENE";
 							}
 							else
 							{
-								if (_loc_2 > 78.75)
+								if (windDir > 78.75)
 								{
 								}
-								if (_loc_2 < 101.25)
+								if (windDir < 101.25)
 								{
 									tfWindDirection.text = "E";
 								}
 								else
 								{
-									if (_loc_2 > 101.25)
+									if (windDir > 101.25)
 									{
 									}
-									if (_loc_2 < 123.75)
+									if (windDir < 123.75)
 									{
 										tfWindDirection.text = "ESE";
 									}
 									else
 									{
-										if (_loc_2 > 123.75)
+										if (windDir > 123.75)
 										{
 										}
-										if (_loc_2 < 146.25)
+										if (windDir < 146.25)
 										{
 											tfWindDirection.text = "SE";
 										}
 										else
 										{
-											if (_loc_2 > 146.25)
+											if (windDir > 146.25)
 											{
 											}
-											if (_loc_2 < 168.75)
+											if (windDir < 168.75)
 											{
 												tfWindDirection.text = "SSE";
 											}
 											else
 											{
-												if (_loc_2 > 168.75)
+												if (windDir > 168.75)
 												{
 												}
-												if (_loc_2 < 191.25)
+												if (windDir < 191.25)
 												{
 													tfWindDirection.text = "S";
 												}
 												else
 												{
-													if (_loc_2 > 191.25)
+													if (windDir > 191.25)
 													{
 													}
-													if (_loc_2 < 213.75)
+													if (windDir < 213.75)
 													{
 														tfWindDirection.text = "SSW";
 													}
 													else
 													{
-														if (_loc_2 > 213.75)
+														if (windDir > 213.75)
 														{
 														}
-														if (_loc_2 < 236.25)
+														if (windDir < 236.25)
 														{
 															tfWindDirection.text = "SW";
 														}
 														else
 														{
-															if (_loc_2 > 236.25)
+															if (windDir > 236.25)
 															{
 															}
-															if (_loc_2 < 258.75)
+															if (windDir < 258.75)
 															{
 																tfWindDirection.text = "WSW";
 															}
 															else
 															{
-																if (_loc_2 > 258.75)
+																if (windDir > 258.75)
 																{
 																}
-																if (_loc_2 < 281.25)
+																if (windDir < 281.25)
 																{
 																	tfWindDirection.text = "W";
 																}
 																else
 																{
-																	if (_loc_2 > 281.25)
+																	if (windDir > 281.25)
 																	{
 																	}
-																	if (_loc_2 < 303.75)
+																	if (windDir < 303.75)
 																	{
 																		tfWindDirection.text = "WNW";
 																	}
 																	else
 																	{
-																		if (_loc_2 > 303.75)
+																		if (windDir > 303.75)
 																		{
 																		}
-																		if (_loc_2 < 326.25)
+																		if (windDir < 326.25)
 																		{
 																			tfWindDirection.text = "NW";
 																		}
 																		else
 																		{
-																			if (_loc_2 > 326.25)
+																			if (windDir > 326.25)
 																			{
 																			}
-																			if (_loc_2 < 348.75)
+																			if (windDir < 348.75)
 																			{
 																				tfWindDirection.text = "NNW";
 																			}

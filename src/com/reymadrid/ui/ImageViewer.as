@@ -1,8 +1,9 @@
 package com.reymadrid.ui
 {
-	import flash.display.Sprite;
 	import com.reymadrid.events.*;
 	import com.reymadrid.loaders.*;
+	
+	import flash.display.Sprite;
 	
 	public class ImageViewer extends Sprite
 	{
@@ -13,84 +14,74 @@ package com.reymadrid.ui
 		
 		public function ImageViewer()
 		{
-			this.init();
-			return;
-		}// end function
+			init();
+		}
 		
 		private function init() : void
 		{
-			this._imageList = [];
-			this._currentImage = 0;
-			return;
-		}// end function
+			_imageList = [];
+			_currentImage = 0;
+		}
 		
 		private function loadImg() : void
 		{
-			this._ld = new ImageLoader(this._path + this._imageList[this._currentImage]);
-			this._ld.addEventListener(ImageEvent.IMAGE_LOADED, this.onLoad);
-			return;
-		}// end function
+			_ld = new ImageLoader(_path + _imageList[_currentImage]);
+			_ld.addEventListener(ImageEvent.IMAGE_LOADED, onLoad);
+		}
 		
 		private function onLoad(event:ImageEvent) : void
 		{
-			if (this.numChildren > 0)
+			if (numChildren > 0)
 			{
-				this.removeChildAt(0);
+				removeChildAt(0);
 			}
-			this.addChild(event.image);
-			return;
-		}// end function
+			addChild(event.image);
+		}
 		
 		public function display() : void
 		{
-			this.loadImg();
-			return;
-		}// end function
+			loadImg();
+		}
 		
 		public function next() : void
 		{
-			var _loc_1:* = this;
-			var _loc_2:* = this._currentImage + 1;
-			_loc_1._currentImage = _loc_2;
-			if (this._currentImage == this._imageList.length)
+			var iv:ImageViewer = this;
+			var ci:int = _currentImage + 1;
+			iv._currentImage = ci;
+			if (_currentImage == _imageList.length)
 			{
-				this._currentImage = 0;
+				_currentImage = 0;
 			}
-			this._ld.addEventListener(ImageEvent.IMAGE_LOADED, this.onLoad);
-			this._ld = new ImageLoader(this._path + this._imageList[this._currentImage]);
-			return;
-		}// end function
+			_ld.addEventListener(ImageEvent.IMAGE_LOADED, onLoad);
+			_ld = new ImageLoader(_path + _imageList[_currentImage]);
+		}
 		
 		public function previous() : void
 		{
-			var _loc_1:* = this;
-			var _loc_2:* = this._currentImage - 1;
-			_loc_1._currentImage = _loc_2;
-			if (this._currentImage < 0)
+			var iv:ImageViewer = this;
+			var ci:int = _currentImage - 1;
+			iv._currentImage = ci;
+			if (_currentImage < 0)
 			{
-				this._currentImage = this._imageList.length - 1;
+				_currentImage = _imageList.length - 1;
 			}
-			this._ld.addEventListener(ImageEvent.IMAGE_LOADED, this.onLoad);
-			this._ld = new ImageLoader(this._path + this._imageList[this._currentImage]);
-			return;
-		}// end function
+			_ld.addEventListener(ImageEvent.IMAGE_LOADED, onLoad);
+			_ld = new ImageLoader(_path + _imageList[_currentImage]);
+		}
 		
-		public function set path(param1:String) : void
+		public function set path(value:String) : void
 		{
-			this._path = param1;
-			return;
-		}// end function
+			_path = value;
+		}
 		
-		public function set imageList(param1:Array) : void
+		public function set imageList(value:Array) : void
 		{
-			this._imageList = param1;
-			return;
-		}// end function
+			_imageList = value;
+		}
 		
 		public function get currentImage() : int
 		{
-			return this._currentImage;
-		}// end function
-		
+			return _currentImage;
+		}
 	}
 }

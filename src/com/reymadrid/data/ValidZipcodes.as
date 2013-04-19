@@ -2,8 +2,8 @@ package com.reymadrid.data
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.net.URLRequest;
 	import flash.net.URLLoader;
+	import flash.net.URLRequest;
 	
 	public class ValidZipcodes extends Sprite
 	{
@@ -16,25 +16,21 @@ package com.reymadrid.data
 		}
 		private function loadData() : void
 		{
-			var _loc_1:* = new URLLoader();
-			_loc_1.load(new URLRequest("assets/data/zipcodes.txt"));
-			_loc_1.addEventListener(Event.COMPLETE, this.onLoad);
-			
-			
-			return;
-		}// end function
+			var urlLoader:URLLoader = new URLLoader();
+			urlLoader.load(new URLRequest("assets/data/zipcodes.txt"));
+			urlLoader.addEventListener(Event.COMPLETE, onLoad);
+		}
 		
 		private function onLoad(event:Event) : void
 		{
-			this._validZips = event.target.data;
+			_validZips = event.target.data;
 			dispatchEvent(new Event(Event.COMPLETE));
-			return;
-		}// end function
+		}
 		
 		public function get validZips() : String
 		{
-			return this._validZips;
-		}// end function
+			return _validZips;
+		}
 		
 	}
 }

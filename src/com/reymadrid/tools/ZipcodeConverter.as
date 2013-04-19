@@ -9,33 +9,30 @@ package com.reymadrid.tools
 	{
 		private var _woeid:String;
 		
-		public function ZipcodeConverter(id:String)
+		public function ZipcodeConverter(value:String)
 		{
-			this.query(id);
-			return;
-		}// end function
+			query(value);
+		}
 		
-		private function query(zip:String) : void
+		private function query(zip:String):void
 		{
-			var _loc_2:* = "SELECT woeid FROM geo.places WHERE text=" + zip + " LIMIT 1";
-			var _loc_3:* = new URLLoader();
-			_loc_3.load(new URLRequest("http://query.yahooapis.com/v1/public/yql?q=" + _loc_2));
-			_loc_3.addEventListener(Event.COMPLETE, this.onParse);
-			return;
-		}// end function
+			var zipcode:* = "SELECT woeid FROM geo.places WHERE text=" + zip + " LIMIT 1";
+			var urlLoader:* = new URLLoader();
+			urlLoader.load(new URLRequest("http://query.yahooapis.com/v1/public/yql?q=" + zipcode));
+			urlLoader.addEventListener(Event.COMPLETE, this.onParse);
+		}
 		
-		private function onParse(event:Event) : void
+		private function onParse(event:Event):void
 		{
-			var _loc_2:* = XML(event.target.data);
-			this._woeid = _loc_2..woeid;
+			var xml:XML = XML(event.target.data);
+			this._woeid = xml..woeid;
 			dispatchEvent(new Event(Event.COMPLETE));
-			return;
-		}// end function
+		}
 		
-		public function get woeid() : String
+		public function get woeid():String
 		{
-			return this._woeid;
-		}// end function
+			return _woeid;
+		}
 		
 	}
 }

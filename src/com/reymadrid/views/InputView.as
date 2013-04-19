@@ -1,9 +1,9 @@
 package com.reymadrid.views
 {
 	import flash.events.MouseEvent;
+	
 	import libs.InputViewBase;
-	import libs.*;
-	import flash.display.MovieClip;
+	//import flash.display.MovieClip;
 	
 	public class InputView extends InputViewBase
 	{
@@ -14,38 +14,34 @@ package com.reymadrid.views
 		
 		public function InputView()
 		{
-			this.init();
-			return;
-		}// end function
+			init();
+		}
 		
 		private function init() : void
 		{
-			this.setupButtons();
-			this.restrictInput();
+			setupButtons();
+			restrictInput();
 			tfError.text = "";
-			this._degreeType = "F";
-			this._speedType = "MPH";
-			return;
-		}// end function
+			_degreeType = "F";
+			_speedType = "MPH";
+		}
 		
 		private function setupButtons() : void
 		{
 			fahrBtn.gotoAndStop(2);
 			celsiusBtn.gotoAndStop(1);
 			submitBtn.gotoAndStop(1);
-			fahrBtn.addEventListener(MouseEvent.CLICK, this.toggleFahr);
-			celsiusBtn.addEventListener(MouseEvent.CLICK, this.toggleCelsius);
-			submitBtn.addEventListener(MouseEvent.MOUSE_DOWN, this.mouseDown);
-			tfInput.addEventListener(MouseEvent.CLICK, this.clearText);
-			return;
-		}// end function
+			fahrBtn.addEventListener(MouseEvent.CLICK, toggleFahr);
+			celsiusBtn.addEventListener(MouseEvent.CLICK, toggleCelsius);
+			submitBtn.addEventListener(MouseEvent.MOUSE_DOWN, mouseDown);
+			tfInput.addEventListener(MouseEvent.CLICK, clearText);
+		}
 		
 		private function restrictInput() : void
 		{
 			tfInput.restrict = "0-9";
-			tfInput.maxChars = 5;
-			return;
-		}// end function
+			tfInput.maxChars = 7;
+		}
 		
 		private function toggleFahr(event:MouseEvent) : void
 		{
@@ -53,11 +49,10 @@ package com.reymadrid.views
 			{
 				fahrBtn.gotoAndStop(2);
 				celsiusBtn.gotoAndStop(1);
-				this._degreeType = "F";
-				this._speedType = "MPH";
+				_degreeType = "F";
+				_speedType = "MPH";
 			}
-			return;
-		}// end function
+		}
 		
 		private function toggleCelsius(event:MouseEvent) : void
 		{
@@ -65,70 +60,65 @@ package com.reymadrid.views
 			{
 				celsiusBtn.gotoAndStop(2);
 				fahrBtn.gotoAndStop(1);
-				this._degreeType = "C";
-				this._speedType = "KPH";
+				_degreeType = "C";
+				_speedType = "KPH";
 			}
-			return;
-		}// end function
+		}
 		
 		private function mouseDown(event:MouseEvent) : void
 		{
 			submitBtn.gotoAndStop(2);
-			submitBtn.addEventListener(MouseEvent.MOUSE_UP, this.mouseUp);
-			return;
-		}// end function
+			submitBtn.addEventListener(MouseEvent.MOUSE_UP, mouseUp);		
+		}
 		
 		private function mouseUp(event:MouseEvent) : void
 		{
 			submitBtn.gotoAndStop(1);
-			submitBtn.removeEventListener(MouseEvent.MOUSE_UP, this.mouseUp);
-			return;
-		}// end function
+			submitBtn.removeEventListener(MouseEvent.MOUSE_UP, mouseUp);
+		}
 		
 		private function clearText(event:MouseEvent) : void
 		{
 			tfInput.text = "";
-			tfInput.removeEventListener(MouseEvent.CLICK, this.clearText);
-			return;
-		}// end function
+			tfInput.removeEventListener(MouseEvent.CLICK, clearText);
+		}
 		
 		public function get zipcode() : String
 		{
-			this._zipcode = tfInput.text;
-			return this._zipcode;
-		}// end function
+			_zipcode = tfInput.text;
+			return _zipcode;
+		}
 		
-		public function set zipcode(param1:String) : void
+		public function set zipcode(value:String) : void
 		{
-			this._zipcode = param1;
-			tfInput.text = this._zipcode;
+			_zipcode = value;
+			tfInput.text = _zipcode;
 			return;
-		}// end function
+		}
 		
 		public function get error() : String
 		{
-			this._error = tfError.text;
-			return this._error;
-		}// end function
+			_error = tfError.text;
+			return _error;
+		}
 		
-		public function set error(param1:String) : void
+		public function set error(value:String) : void
 		{
-			this._error = param1;
-			tfError.text = this._error;
+			_error = value;
+			tfError.text = _error;
 			return;
-		}// end function
+		}
 		
 		public function get degreeType() : String
 		{
-			var _loc_1:* = this._degreeType;
-			return _loc_1;
-		}// end function
+			var dt:String = _degreeType;
+			return dt;
+		}
 		
 		public function get speedType() : String
 		{
-			var _loc_1:* = this._speedType;
-			return _loc_1;
-		}// end function
-		
+			var st:String = _speedType;
+			return st;
+		}
 	}
 }

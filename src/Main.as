@@ -17,18 +17,15 @@ package
 		
 		public function Main()
 		{
-			this.init();
-			return;
-		}// end function
+			init();
+		}
 		
 		private function init() : void
 		{
 			var app:Application = new Application();
 			app.x = stage.stageWidth / 2;
 			app.y = 5;
-			this.addChild(app);
-			return;
-		}// end function
-		
+			addChild(app);
+		}	
 	}
 }
