@@ -9,23 +9,33 @@ package com.reymadrid.views
 	{
 		private var _degreeTypes:Array;
 		
+		//displays the weather view with weather results
 		public function WeatherView()
 		{
 			super();
 			init();
 		}
+		
+		//calls for setupButtons()
 		private function init() : void
 		{
 			setupButton();
+			
+			//array with 5 degree types
 			_degreeTypes = [tfDegreeType1, tfDegreeType2, tfDegreeType3, tfDegreeType4, tfDegreeType5];
 		}
 		
+		//when reset button is clicked, calls mouseDown()
 		private function setupButton() : void
 		{
 			resetBtn.gotoAndStop(1);
 			resetBtn.addEventListener(MouseEvent.MOUSE_DOWN, mouseDown);
 		}
 		
+		//this function checks the image code
+		//assigns the image png to the corresponding code
+		//so each weather image is different and at the end it 
+		//returns the image name stored in the img variable
 		private function imageByCode(code:String) : String
 		{
 			var img:String = "";
@@ -238,49 +248,55 @@ package com.reymadrid.views
 			return img;
 		}
 		
-		private function mouseDown(event:MouseEvent) : void
+		//mousedown for reset button
+		private function mouseDown(event:MouseEvent):void
 		{
 			resetBtn.gotoAndStop(2);
-			resetBtn.addEventListener(MouseEvent.MOUSE_UP, this.mouseUp);
-			return;
+			resetBtn.addEventListener(MouseEvent.MOUSE_UP, mouseUp);
 		}
 		
-		private function mouseUp(event:MouseEvent) : void
+		//mouseup for reset button
+		private function mouseUp(event:MouseEvent):void
 		{
 			resetBtn.gotoAndStop(1);
 			resetBtn.removeEventListener(MouseEvent.MOUSE_UP, mouseUp);
-			return;
 		}
 		
+		//sets the degreetype to the degree.text
 		public function set degreeType(dt:String):void
 		{
 			var degree:* = null;
 			for each (degree in this._degreeTypes)
 			{
-				
 				degree.text = dt;
 			}
 			return;
 		}
 		
+		//sets locoation the the location textfield
 		public function set location(value:String):void
 		{
 			tfLocation.text = value;
 			return;
 		}
 		
+		//sets today's high value to the todays high textfield
 		public function set todayHigh(value:String):void
 		{
 			tfTodayHigh.text = value;
 			return;
 		}
 		
+		//sets today's low value to the todays low textfield
 		public function set todayLow(value:String):void
 		{
 			tfTodayLow.text = value;
 			return;
 		}
 		
+		//sets the image viewer to display a weather image 
+		//to the corresponding today's weather
+		//displays image on screen
 		public function set todayCode(value:String):void
 		{
 			var tc:String = value;
@@ -298,24 +314,30 @@ package com.reymadrid.views
 			return;
 		}
 		
+		//sets today's forecast value to the todays forecast textfield
 		public function set todayForecast(value:String) : void
 		{
 			tfTodayForecast.text = value;
 			return;
 		}
 		
+		//sets tomorrow's high value to the tomorrow high textfield
 		public function set tomorrowHigh(value:String) : void
 		{
 			tfTomorrowHigh.text = value;
 			return;
 		}
 		
+		//sets tomorrow's low value to the tomorrow low textfield
 		public function set tomorrowLow(value:String) : void
 		{
 			tfTomorrowLow.text = value;
 			return;
 		}
 		
+		//sets the image viewer to display a weather image 
+		//to the corresponding tomorrow's weather
+		//displays image on screen
 		public function set tomorrowCode(value:String) : void
 		{
 			var tmc:* = value;
@@ -333,24 +355,28 @@ package com.reymadrid.views
 			return;
 		}
 		
+		//sets tomorrow's forecast value to the tomorrow forecast textfield
 		public function set tomorrowForecast(value:String) : void
 		{
 			tfTomorrowForecast.text = value;
 			return;
 		}
 		
+		//sets curent temp's value to the current temp textfield
 		public function set currentTemp(value:String) : void
 		{
 			tfCurrentTemp.text = value;
 			return;
 		}
 		
+		//sets speed type's value to the speed type textfield
 		public function set speedType(value:String) : void
 		{
 			tfSpeedType.text = value;
 			return;
 		}
 		
+		//sets curent wind's value to the current wind textfield
 		public function set currentWindMPH(value:String) : void
 		{
 			var wind:* = Math.round(Number(value));
@@ -359,9 +385,11 @@ package com.reymadrid.views
 			return;
 		}
 		
+		//this function checks for the wind direction
+		//sets the number to the corresponding text
 		public function set currentWindDirection(value:String) : void
 		{
-			var windDir:* = Number(value);
+			var windDir:Number = Number(value);
 			if (windDir == 0)
 			{
 				tfWindDirection.text = "";

@@ -14,6 +14,8 @@ package com.reymadrid.data
 			super();
 			loadData();
 		}
+		
+		//validates the zipcode from listed zipcodes inside text document
 		private function loadData() : void
 		{
 			var urlLoader:URLLoader = new URLLoader();

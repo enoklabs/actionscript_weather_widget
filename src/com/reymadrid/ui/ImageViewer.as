@@ -12,6 +12,7 @@ package com.reymadrid.ui
 		private var _currentImage:int;
 		private var _ld:ImageLoader;
 		
+		//imageViewer loads the corresponding weather image
 		public function ImageViewer()
 		{
 			init();
@@ -23,6 +24,7 @@ package com.reymadrid.ui
 			_currentImage = 0;
 		}
 		
+		//loads the current image into the imageLoader()
 		private function loadImg() : void
 		{
 			_ld = new ImageLoader(_path + _imageList[_currentImage]);
@@ -38,6 +40,7 @@ package com.reymadrid.ui
 			addChild(event.image);
 		}
 		
+		//display() calls for the loadImg()
 		public function display() : void
 		{
 			loadImg();

@@ -9,6 +9,7 @@ package com.reymadrid.tools
 	{
 		private var _woeid:String;
 		
+		//function converts the zipcode from the xml by parsing 
 		public function ZipcodeConverter(value:String)
 		{
 			query(value);
@@ -19,13 +20,13 @@ package com.reymadrid.tools
 			var zipcode:* = "SELECT woeid FROM geo.places WHERE text=" + zip + " LIMIT 1";
 			var urlLoader:* = new URLLoader();
 			urlLoader.load(new URLRequest("http://query.yahooapis.com/v1/public/yql?q=" + zipcode));
-			urlLoader.addEventListener(Event.COMPLETE, this.onParse);
+			urlLoader.addEventListener(Event.COMPLETE, onParse);
 		}
 		
 		private function onParse(event:Event):void
 		{
 			var xml:XML = XML(event.target.data);
-			this._woeid = xml..woeid;
+			_woeid = xml..woeid;
 			dispatchEvent(new Event(Event.COMPLETE));
 		}
 		
