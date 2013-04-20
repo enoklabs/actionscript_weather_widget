@@ -2,7 +2,7 @@
 Rey Madrid
 04/17/13
 FAT 1304 01
-Assignment #2 - Weather Application
+Assignment #2 - Weather Widget Application
 */ 
 package
 {
